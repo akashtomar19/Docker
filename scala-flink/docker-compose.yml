@@ -1,0 +1,37 @@
+# services:
+#   jobmanager:
+#     image: flink:latest
+#     ports:
+#       - "8081:8081"
+#     environment:
+#       - JOB_MANAGER_RPC_ADDRESS=jobmanager
+#     command: jobmanager
+
+#   taskmanager:
+#     image: flink:latest
+#     depends_on:
+#       - jobmanager
+#     environment:
+#       - JOB_MANAGER_RPC_ADDRESS=jobmanager
+#     command: taskmanager
+#     deploy:
+#       replicas: 2
+
+services:
+  jobmanager:
+    image: flink:latest
+    ports:
+      - "8081:8081"
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager
+    command: jobmanager
+    volumes:
+      - C:/Users/akash/dockertest/scala-flink/target:/flink-target
+  
+  taskmanager:
+    image: flink:latest
+    depends_on:
+      - jobmanager
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager
+    command: taskmanager
