@@ -1,0 +1,14 @@
+version: '3'
+services:
+  redis:
+    image: redis:latest     # <-- Redis service uses the official Redis image from Docker Hub
+    ports:
+      - "6379:6379"
+
+  python-app:
+    build: .                # <-- Python service uses the Dockerfile in the current directory
+    depends_on:
+      - redis               # Ensures Redis starts first
+    volumes:
+      - .:/usr/src/app
+    command: python ./set_redis_key.py  # Runs the Python script inside the Python container
