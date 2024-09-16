@@ -1,7 +1,9 @@
 #######How to run######
 mvn clean install
 docker compose up
+
 C:\Users\akash\dockertest\scala-flink>docker exec -it scala-flink-jobmanager-1 ./bin/flink run /flink-target/flink-wordcount-1.0-SNAPSHOT.jar
+
 WARNING: Unknown module: jdk.compiler specified to --add-exports
 WARNING: Unknown module: jdk.compiler specified to --add-exports
 WARNING: Unknown module: jdk.compiler specified to --add-exports
